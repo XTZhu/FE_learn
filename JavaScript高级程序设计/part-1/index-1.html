@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>part-1-index-1</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" /> -->
+    <!--  XHTML 文档中，可以忽略结束标签，比如：
+    <script src="example.js"/> 
+    以上语法不能在 HTML 文件中使用，因为它是无效的 HTML，有些浏览器不能正常处理，比如 IE。 -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js">
+      // 另外，使用了 src 属性的<script>元素不应该再在<script>和<\/script>标签中再包含其他
+      // JavaScript 代码。如果两者都提供的话，则浏览器只会下载并执行脚本文件，从而忽略行内代码。
+    </script>
+    <script>
+      function getRandomInt() {
+        return _.reduce(
+          [1, 2, 3],
+          function (sum, n) {
+            return sum + n;
+          },
+          0
+        );
+      }
+      window.onload = function () {
+        console.log(getRandomInt());
+      };
+    </script>
+  </head>
+  <body>
+    <div>
+      <section>
+        <h2>javascript高级程序设计第二章</h2>
+        <h3>index - 1</h3>
+        <ul>
+          <li>
+            <a href="./index-2.html">jump to part-1-index-2</a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
