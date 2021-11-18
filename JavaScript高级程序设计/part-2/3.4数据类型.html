@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据类型</title>
+  </head>
+  <body>
+    <h2>简单数据类型</h2>
+    <ol>
+      <li>Undefined</li>
+      <li>Null</li>
+      <li>Boolean</li>
+      <li>Number</li>
+      <li>string</li>
+      <li>Symbol</li>
+    </ol>
+
+    <h2>复杂数据类型</h2>
+    <ul>
+      <li>Object</li>
+    </ul>
+
+    <h3>typeof 操作符</h3>
+    <ul>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>undefined</code>
+          <span>undefined</span>
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>null</code>
+          <span>object</span>
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>true</code>
+          <span>boolean</span>
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>12</code>
+          <span>number</span>
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>'string'</code>
+          <span>string</span>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>function sayHi(){ console.log('Hi!'); }</code>
+          <span>function</span>
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>Symbol(42)</code>
+          <span>symbol</span>
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>{}</code>
+          <span>object</span>
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>[]</code>
+          <span>object</span>
+        </p>
+      </li>
+      <li>
+        <p>
+          <code>typeof</code>
+          <code>new Date()</code>
+          <span>object</span>
+        </p>
+      </li>
+    </ul>
+
+    <p>
+      在对未初始化的变量调用 typeof
+      时，返回的结果是"undefined"，但对未声明的变量调用它时，
+      返回的结果还是"undefined"，这就有点让人看不懂了。比如下面的例子：
+    </p>
+    <code>
+      <div>let message; // 这个变量被声明了，只是值为 undefined</div>
+      <div>//确保没有声明过这个变量</div>
+      <div>// let age</div>
+      <div>console.log(typeof message); //"undefined"</div>
+      <div>console.log(typeof age); // "undefined"</div>
+    </code>
+    <strong>
+      无论是声明还是未声明，typeof
+      返回的都是字符串"undefined"。逻辑上讲这是对的，因为虽然
+      严格来讲这两个变量存在根本性差异，但它们都无法执行实际操作。
+    </strong>
+  </body>
+</html>
