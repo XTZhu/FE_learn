@@ -136,3 +136,84 @@ console.log(output); // green,blue,yellow
 let colors = ["red", "green", "blue", "yellow", "black", "brown"];
 let output = colors.splice(1, 3, "orange", "purple");
 console.log(output); // green,blue,yellow
+
+/* --------------------------------------------------- */
+// 搜索和位置方法
+// 严格相等
+// indexOf()、lastIndexOf()、includes()
+// indexOf() 方法返回在数组中可以找到给定元素的第一个索引，如果不存在，则返回 -1。
+let colors = ["red", "green", "blue", "yellow", "black", "brown"];
+let output = colors.indexOf("green");
+console.log(output); // 1
+
+// lastIndexOf() 方法返回在数组中可以找到给定元素的最后一个索引，如果不存在，则返回 -1。
+let colors = ["red", "green", "blue", "yellow", "black", "brown"];
+let output = colors.lastIndexOf("green");
+console.log(output); // 1
+
+// includes() 方法返回一个布尔值，表示数组中是否包含给定的值。
+let colors = ["red", "green", "blue", "yellow", "black", "brown"];
+let output = colors.includes("green");
+console.log(output); // true
+
+// 断言函数
+// 断言函数是一个可选的函数，它可以用来检查一个表达式的结果是否为 true。
+// 如果表达式的结果不为 true，则会抛出一个错误。
+// 如果表达式的结果为 true，则断言函数不会执行。
+// 断言函数的第一个参数是表达式，第二个参数是错误信息。
+// 断言函数的返回值是一个布尔值，表示表达式的结果是否为 true。
+// find()、findIndex()、some()、every()
+// find() 方法返回数组中满足提供的测试函数的第一个元素的值。
+// findIndex() 方法返回数组中满足提供的测试函数的第一个元素的索引。
+// some() 方法用于检测数组中的元素是否满足提供的测试函数。
+// every() 方法用于检测数组中的元素是否都满足提供的测试函数。
+let ages = [32, 33, 16, 40];
+let checkAdult = function (age) {
+  return age >= 18;
+};
+let output = ages.find(checkAdult);
+console.log(output); // 32
+let output = ages.findIndex(checkAdult);
+console.log(output); // 0
+let output = ages.some(checkAdult);
+console.log(output); // true
+let output = ages.every(checkAdult);
+console.log(output); // false
+
+//  迭代方法
+// forEach()、map()、filter()、reduce()、reduceRight()
+// forEach() 方法对数组的每个元素执行一次提供的函数。
+// forEach() 方法不会对结果有任何影响。
+// forEach() 方法返回 undefined。
+// map() 方法返回一个新数组，其结果是该数组中的每个元素都调用一次提供的函数后返回的结果。
+// map() 方法不会对结果有任何影响。
+// map() 方法返回一个新数组。
+// filter() 方法返回一个新数组，其结果是通过检查每个元素是否满足提供的测试函数后返回的结果。
+// filter() 方法不会对结果有任何影响。
+// filter() 方法返回一个新数组。
+// reduce() 方法接受一个函数作为累加器（accumulator）和数组中的每个值（从左到右）。
+// reduce() 方法返回一个单一的值，该值是数组中所有元素调用一次提供的函数后返回的结果。
+// reduce() 方法不会对结果有任何影响。
+// reduce() 方法返回一个单一的值。
+// reduceRight() 方法接受一个函数作为累加器（accumulator）和数组中的每个值（从右到左）。
+// reduceRight() 方法返回一个单一的值，该值是数组中所有元素调用一次提供的函数后返回的结果。
+// reduceRight() 方法不会对结果有任何影响。
+// reduceRight() 方法返回一个单一的值。
+let ages = [32, 33, 16, 40];
+let checkAdult = function (age) {
+  return age >= 18;
+};
+let output = ages.forEach(checkAdult);
+console.log(output); // undefined
+output = ages.map(checkAdult);
+console.log(output); // [ true, true, false, true ]
+output = ages.filter(checkAdult);
+console.log(output); // [ 32, 33, 40 ]
+output = ages.reduce(function (total, age) {
+  return total + age;
+});
+console.log(output); // 100
+output = ages.reduceRight(function (total, age) {
+  return total + age;
+});
+console.log(output); // 100
