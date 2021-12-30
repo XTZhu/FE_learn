@@ -217,3 +217,11 @@ output = ages.reduceRight(function (total, age) {
   return total + age;
 });
 console.log(output); // 100
+
+// every() , some()
+Array.prototype.every(function (value, index, array) {
+  return value > 2
+})
+Array.prototype.some(function (value, index, array) {
+  return value > 2
+})
