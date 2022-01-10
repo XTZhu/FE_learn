@@ -220,13 +220,13 @@ console.log(output); // 100
 
 // every() , some()
 Array.prototype.every(function (value, index, array) {
-  return value > 2
-})
+  return value > 2;
+});
 Array.prototype.some(function (value, index, array) {
-  return value > 2
-})
+  return value > 2;
+});
 
 // filter()
-let numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1]; 
-let filterResult = numbers.filter((item, index, array) => item > 2); 
-alert(filterResult); // 3,4,5,4,3
+let numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+let filterResult = numbers.filter((item, index, array) => item > 2);
+console.log(filterResult); // [ 3, 4, 5, 4, 3 ]
