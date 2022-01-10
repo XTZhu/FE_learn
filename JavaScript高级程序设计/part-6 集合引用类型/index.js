@@ -181,7 +181,7 @@ let output = ages.every(checkAdult);
 console.log(output); // false
 
 //  迭代方法
-// forEach()、map()、filter()、reduce()、reduceRight()
+// forEach()、map()、filter()、reduce()、reduceRight()、 forEach()、 some()
 // forEach() 方法对数组的每个元素执行一次提供的函数。
 // forEach() 方法不会对结果有任何影响。
 // forEach() 方法返回 undefined。
