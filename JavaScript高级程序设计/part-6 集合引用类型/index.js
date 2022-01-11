@@ -181,7 +181,7 @@ let output = ages.every(checkAdult);
 console.log(output); // false
 
 //  迭代方法
-// forEach()、map()、filter()、reduce()、reduceRight()、 forEach()、 some()
+// forEach()、map()、filter()、 forEach()、 some()
 // forEach() 方法对数组的每个元素执行一次提供的函数。
 // forEach() 方法不会对结果有任何影响。
 // forEach() 方法返回 undefined。
@@ -191,14 +191,7 @@ console.log(output); // false
 // filter() 方法返回一个新数组，其结果是通过检查每个元素是否满足提供的测试函数后返回的结果。
 // filter() 方法不会对结果有任何影响。
 // filter() 方法返回一个新数组。
-// reduce() 方法接受一个函数作为累加器（accumulator）和数组中的每个值（从左到右）。
-// reduce() 方法返回一个单一的值，该值是数组中所有元素调用一次提供的函数后返回的结果。
-// reduce() 方法不会对结果有任何影响。
-// reduce() 方法返回一个单一的值。
-// reduceRight() 方法接受一个函数作为累加器（accumulator）和数组中的每个值（从右到左）。
-// reduceRight() 方法返回一个单一的值，该值是数组中所有元素调用一次提供的函数后返回的结果。
-// reduceRight() 方法不会对结果有任何影响。
-// reduceRight() 方法返回一个单一的值。
+
 let ages = [32, 33, 16, 40];
 let checkAdult = function (age) {
   return age >= 18;
@@ -209,14 +202,6 @@ output = ages.map(checkAdult);
 console.log(output); // [ true, true, false, true ]
 output = ages.filter(checkAdult);
 console.log(output); // [ 32, 33, 40 ]
-output = ages.reduce(function (total, age) {
-  return total + age;
-});
-console.log(output); // 100
-output = ages.reduceRight(function (total, age) {
-  return total + age;
-});
-console.log(output); // 100
 
 // every() , some()
 Array.prototype.every(function (value, index, array) {
@@ -230,3 +215,171 @@ Array.prototype.some(function (value, index, array) {
 let numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
 let filterResult = numbers.filter((item, index, array) => item > 2);
 console.log(filterResult); // [ 3, 4, 5, 4, 3 ]
+
+
+// 归并方法
+// reduce()、reduceRight()
+// reduce() 方法接受一个函数作为累加器（accumulator）和数组中的每个值（从左到右）。
+// reduce() 方法返回一个单一的值，该值是数组中所有元素调用一次提供的函数后返回的结果。
+// reduce() 方法不会对结果有任何影响。
+// reduce() 方法返回一个单一的值。
+// reduceRight() 方法接受一个函数作为累加器（accumulator）和数组中的每个值（从右到左）。
+// reduceRight() 方法返回一个单一的值，该值是数组中所有元素调用一次提供的函数后返回的结果。
+// reduceRight() 方法不会对结果有任何影响。
+// reduceRight() 方法返回一个单一的值。
+let ages = [32, 33, 16, 40];
+
+output = ages.reduce(function (total, age) {
+  return total + age;
+});
+console.log(output); // 100
+output = ages.reduceRight(function (total, age) {
+  return total + age;
+});
+console.log(output); // 100
+
+
+// 定型数组
+// 特殊的包含数值类型的数组
+// 为WebGL（Web Graphics Library）提供服务
+// Array(低效)-> CanvasFloatArray -> Float32Array(第一个类型)
+
+// ArrayBuffer
+// ArrayBuffer()是一个普通的 JavaScript 构造函数，可用于在内存中分配特定数量的字节空间。
+const buf = new ArrayBuffer(16); // 在内存种分配16字节
+console.log(buf.byteLength);
+// ArrayBuffer一经创建就不能再改变大小, 不过可以使用slice()复制其全部或部分到一个新的实例中：
+// https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+const buf1 = new ArrayBuffer(16);
+const buf2 = buf1.slice(4, 16);
+console.log(buf2.byteLength); // 8
+
+// ... 暂时略过
+
+
+//6.4 Map
+
+// "键/值对"储存机制
+
+// 6.4.1 基本API
+// new 关键字和 Map 构造函数可以创建一个空映射
+const m = new Map();
+
+// 创建的同时初始化实例
+// 数传入一个可迭代对象，需要包含键/值对数组。
+
+// 1
+// 使用嵌套数组初始化映射
+const m1 = new Map([
+  ["key1", "val1"],
+  ["key2", "val2"],
+  ["key3", "val3"]
+]);
+alert(m1.size); // 3
+
+// 2
+//使用自定义迭代器初始化映射
+const m2 = new Map({
+  [Symbol.iterator]: function* () {
+    yield ["key1", "val1"];
+    yield ["key2", "val2"];
+    yield ["key3", "val3"];
+  }
+});
+alert(m2.size); // 3
+
+//3
+// 映射期待的键/值对，无论是否提供
+const m3 = new Map([[]]);
+alert(m3.has(undefined)); // true 
+alert(m3.get(undefined)); // undefined
+
+// function: set(), get(), has(), size, delete(), clear()
+
+
+// 6.4.2 顺序与迭代
+// 与 Object 类型的一个主要差异是，
+// Map 实例会维护键值对的插入顺序，因此可以根据插入顺序执行迭代操作。
+
+// 映射实例可以提供一个迭代器（Iterator），能以插入顺序生成[key, value]形式的数组。
+// entries() 或 Symbol.iterator属性(引用entries())取得这个迭代器
+const m = new Map([["key1", "value1"], ["key2", "value2"], ["key3", "value3"]]);
+
+console.log(m.entries === m[Symbol.iterator]) // true
+
+// for(let pair of m[Symbol.iterator]()) 等同于下一行
+for (let pair of m.entries()) {
+  console.log(pair);
+}
+// [key1, value1], [key2, value2]...
+
+// 可使用拓展运算符
+console.log([...m]); // [[key1, value1], [key2, value2], [key3, value3]]
+
+
+// 也可使用回调方式
+const m = new Map([
+  ["key1", "val1"],
+  ["key2", "val2"],
+  ["key3", "val3"]
+]);
+m.forEach((val, key) => alert(`${key} -> ${val}`));
+// key1 -> val1
+// key2 -> val2
+// key3 -> val3
+
+// keys(), values()
+
+//键和值在迭代器遍历时是可以修改的，但映射内部的引用则无法修改。
+const m1 = new Map([
+  ["key1", "val1"]
+]);
+// 作为键的字符串原始值是不能修改的
+for (let key of m1.keys()) {
+  // 尝试修改键的原始值
+  key = "newKey";
+  alert(key); // newKey 
+  alert(m1.get("key1")); // val1 
+}
+const keyObj = { id: 1 };
+const m = new Map([
+  [keyObj, "val1"]
+]);
+// 修改了作为键的对象的属性，但对象在映射内部仍然引用相同的值
+for (let key of m.keys()) {
+  key.id = "newKey";
+  alert(key); // {id: "newKey"} 
+  alert(m.get(keyObj)); // val1 
+}
+alert(keyObj); // {id: "newKey"}
+
+
+// 6.6 Set
+
+// api
+const m = new Set();
+const s1 = new Set(["val1", "val2", "val3"]);
+
+console.log(s1.size);
+
+// add(), has(), size(), delete(), clear()
+
+// 顺序与迭代
+// Set 会维护值插入时的顺序，因此支持按顺序迭代
+//集合实例可以提供一个迭代器（Iterator），能以插入顺序生成集合内容。
+// 可以通过 values()方法及其别名方法 keys()（或者 Symbol.iterator 属性，它引用 values()）取得这个迭代器：
+const s = new Set(["val1", "val2", "val3"]);
+alert(s.values === s[Symbol.iterator]); // true 
+alert(s.keys === s[Symbol.iterator]); // true 
+for (let value of s.values()) {
+  alert(value);
+}
+// val1 
+// val2 
+// val3 
+for (let value of s[Symbol.iterator]()) {
+  alert(value);
+}
+// val1
+// val2 
+// val3
