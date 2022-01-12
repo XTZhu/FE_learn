@@ -189,3 +189,63 @@ console.log(iter.next()); // { done: true, value: undefined }
     console.log(iter.next()); // { done: false, value: 'baz' } 
     console.log(iter.next()); // { done: true, value: undefined }
     ```
+
+
+#### 自定义迭代器
+任何实现Iterator接口的对象都可以作为迭代器使用。
+``` js
+class Counter{
+    constructor(limit){
+        this.count = 1;
+        this.limit = limit;
+    }
+
+    next(){
+        if(this.count <= this.limit){
+            return {done: false, value: this.count++}
+        }else {
+            return {done: true, value: undefined};
+        }
+    }
+    [Symbol.iterator](){
+        return this;
+    }
+}
+
+let counter = new Counter(3);
+
+for(let i of counter){
+    console.log(counter);
+}
+```
+这个类实现了 Iterator 接口，但不理想。这是因为它的每个实例只能被迭代一次
+``` js
+for(let i of counter){
+    console.log(counter); // 1, 2, 3
+}
+
+for(let i of counter){
+    console.log(counter); //nothing logged
+}
+```
+
+使用闭包来让计数器变量独立计数
+``` js
+class Counter {
+    constructor(limit){
+        this.limit = limit;
+    }
+    [Symbol.iterator](){
+        let count = 1,
+        limit = this.limit;
+        return {
+            next(){
+                if(count <= limit){
+                    return { done: fale, value: count++};
+                } else {
+                    return {done: true, value: undefined};
+                }
+            }
+        };
+    }
+}
