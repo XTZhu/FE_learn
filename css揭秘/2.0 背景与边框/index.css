@@ -1,0 +1,63 @@
+body {
+    border: 2px;
+    min-height:100vh;
+    background: green;
+    background: repeat top/100% url(../images/background-color.webp);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+   
+}
+body div {
+    margin-bottom: 20px !important;
+}
+
+.container{
+    margin: 0 auto;
+    border: 10px solid hsla(0, 0%, 100% ,.5);
+    padding: 10px;
+    background: white;
+    /* border-style: dashed; */
+    background-clip: padding-box;
+    background-clip: content-box;
+}
+
+.mult-border{
+    background: #aaa;
+    height:400px;
+    width: 400px;
+
+}
+.mult-border .solustion-box-shadow{
+    height: 100px;
+    width: 200px;
+    /* x偏移量 | y偏移量 | 阴影颜色 */
+    /* box-shadow: 60px -16px teal; */
+
+    /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影颜色 */
+    /* box-shadow: 10px 5px 5px black; */
+
+
+    /* 插页(阴影向内) | x偏移量 | y偏移量 | 阴影颜色 */
+    /* box-shadow: inset 5em 1em gold; */
+
+    /* 任意数量的阴影，以逗号分隔 */
+    /* box-shadow: 3px 3px red, -1em 0 0.4em olive; */
+
+    /* x偏移量 | y偏移量 | 阴影颜色 */
+    /* box-shadow: 10px 5px 5px rgba(255, 255, 255, 1) */
+
+     /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+     box-shadow: 2px 2px 2px 10px rgba(0, 0, 0, 1), 2px 2px 2px 25px rgba(0, 80, 80, 1);
+     margin: 50px;
+}
+
+.mult-border .solustion-outline {
+    height: 100px;
+    width: 200px;
+    margin: 40px;
+    border: 20px solid black;
+    outline: 2px dashed rgba(0, 80, 80);
+    outline-offset: -22px;
+}
